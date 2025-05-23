@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 import uuid
 
 router = APIRouter(
@@ -8,22 +8,28 @@ router = APIRouter(
     tags=["items"]
 )
 
-# Modelo para los items
-class Item(BaseModel):
-    id: str
+#Item model
+class ItemCreate(BaseModel):
     nombre: str
     precio: float
 
-# Lista en memoria para almacenar los items
+#item model with id
+class Item(ItemCreate):
+    id: str
+
+#Storage items
 items = []
 
 #Create items
 @router.post("/", response_model=Item)
-def crear_item(item: Item):
-    # Generar un ID único para el nuevo item
-    item.id = str(uuid.uuid4())
-    items.append(item)
-    return item
+def crear_item(item: ItemCreate):
+    nuevo_item = Item(
+        id=str(uuid.uuid4()),
+        nombre=item.nombre,
+        precio=item.precio
+    )
+    items.append(nuevo_item)
+    return nuevo_item
 
 #Get items
 @router.get("/", response_model=List[Item])
