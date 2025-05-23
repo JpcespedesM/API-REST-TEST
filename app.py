@@ -3,7 +3,6 @@ from routes import items
 
 app = FastAPI()
 
-# Incluir las rutas de items
 app.include_router(items.router)
 
 if __name__ == "__main__":
