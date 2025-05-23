@@ -42,9 +42,33 @@ El servidor se ejecutará en `http://localhost:8000`
     "precio": 99.99
 }
 ```
+El sistema generará automáticamente un ID único para el item.
 
 ### Obtener todos los items
 - **GET** `/items/`
+- Respuesta:
+```json
+[
+    {
+        "id": "123e4567-e89b-12d3-a456-426614174000",
+        "nombre": "Ejemplo",
+        "precio": 99.99
+    }
+]
+```
+
+### Obtener un item por ID
+- **GET** `/items/{item_id}`
+- Ejemplo: `GET /items/123e4567-e89b-12d3-a456-426614174000`
+- Respuesta:
+```json
+{
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "nombre": "Ejemplo",
+    "precio": 99.99
+}
+```
+- Si el item no existe, devolverá un error 404 con el mensaje "Item no encontrado"
 
 ## Documentación
 
