@@ -8,7 +8,9 @@ Esta es una API REST simple que permite crear y obtener items con nombre y preci
 ├── app.py              # Punto de entrada de la aplicación
 ├── routes/             # Carpeta de rutas
 │   └── items.py       # Rutas relacionadas con items
-└── requirements.txt    # Dependencias del proyecto
+├── requirements.txt    # Dependencias del proyecto
+├── Dockerfile         # Configuración de Docker
+└── docker-compose.yml # Configuración de Docker Compose
 ```
 
 ## Requisitos
@@ -16,8 +18,11 @@ Esta es una API REST simple que permite crear y obtener items con nombre y preci
 - Python 3.7+
 - FastAPI
 - Uvicorn
+- Docker (opcional)
 
 ## Instalación
+
+### Método 1: Instalación Local
 
 1. Instala las dependencias:
 ```bash
@@ -27,6 +32,13 @@ pip install -r requirements.txt
 2. Ejecuta el servidor:
 ```bash
 python app.py
+```
+
+### Método 2: Usando Docker
+
+1. Construye y ejecuta con Docker Compose:
+```bash
+docker-compose up --build
 ```
 
 El servidor se ejecutará en `http://localhost:8000`
